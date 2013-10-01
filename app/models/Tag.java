@@ -11,7 +11,7 @@ public class Tag {
   public static List<Tag> tags = new LinkedList<Tag>();
 
   static {
-    tags.add(new Tag(1L, "lightweight", Product.findByName("paperclips")));
+    tags.add(new Tag(1L, "lightweight", Product.findByName("paperclips 1")));
     tags.add(new Tag(2L, "metal", Product.findByName("paperclips")));
     tags.add(new Tag(3L, "plastic", Product.findByName("paperclips")));
   }
