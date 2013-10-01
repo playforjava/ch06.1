@@ -3,17 +3,18 @@ package models;
 
 import play.data.validation.Constraints;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Product {
 
-  private static Set<Product> products;
+  private static List<Product> products;
 
   static {
-    products = new HashSet<Product>();
+    products = new ArrayList<Product>();
     products.add(new Product("1111111111111", "Paperclips 1",
         "Paperclips description 1"));
     products.add(new Product("2222222222222", "Paperclips 2",
@@ -32,7 +33,7 @@ public class Product {
   public String name;
   public String description;
 
-  public List<Tag> tags = new LinkedList<>();
+  public List<Tag> tags = new LinkedList<Tag>();
 
   public Product() {
   }
@@ -47,8 +48,8 @@ public class Product {
     return String.format("%s - %s", ean, name);
   }
 
-  public static Set<Product> findAll() {
-    return new HashSet<Product>(products);
+  public static List<Product> findAll() {
+    return new ArrayList<Product>(products);
   }
 
   public static Product findByEan(String ean) {
@@ -60,8 +61,8 @@ public class Product {
     return null;
   }
 
-  public static Set<Product> findByName(String term) {
-    final Set<Product> results = new HashSet<Product>();
+  public static List<Product> findByName(String term) {
+    final List<Product> results = new ArrayList<Product>();
     for (Product candidate : products) {
       if (candidate.name.toLowerCase().contains(term.toLowerCase())) {
         results.add(candidate);
